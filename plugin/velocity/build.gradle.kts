@@ -1,6 +1,5 @@
 plugins {
     id("com.github.johnrengelman.shadow").version("8.1.1")
-
     id("net.kyori.blossom").version("2.0.1")
 }
 
@@ -9,16 +8,12 @@ version = project.parent!!.version
 
 repositories {
     maven("https://repo.papermc.io/repository/maven-public/")
-
-    flatDir {
-        dirs("D:\\Java Projects\\SavageDev\\BungeeTpa\\plugin\\velocity\\build\\libs")
-    }
+    maven("https://mvnrepository.com/artifact/ninja.leaping.configurate/")
 }
 
 dependencies {
     compileOnly("com.velocitypowered:velocity-api:3.1.0")
     annotationProcessor("com.velocitypowered:velocity-api:3.1.0")
-
     implementation("org.bstats:bstats-velocity:3.0.2")
     implementation(project(":plugin:common"))
     implementation(project(":common"))
@@ -32,6 +27,10 @@ sourceSets {
             }
         }
     }
+}
+
+tasks.withType(JavaCompile::class.java) {
+    options.encoding = "UTF-8"
 }
 
 tasks {
