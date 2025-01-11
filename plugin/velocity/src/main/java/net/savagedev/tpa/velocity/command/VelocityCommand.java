@@ -37,7 +37,7 @@ public class VelocityCommand implements SimpleCommand {
         }
 
         Player playerSource = (Player) invocation.source();
-        if ("Mining".equals(playerSource.getCurrentServer().get().getServerInfo().getName())) {
+        if ("Mining".equals(playerSource.getCurrentServer().get().getServerInfo().getName()) && !playerSource.hasPermission("tp.bypass")) {
             TextComponent message = Component.text()
                 .append(Component.text("Minen ").color(TextColor.color(118, 65, 11))
                     .decorate(TextDecoration.BOLD))
